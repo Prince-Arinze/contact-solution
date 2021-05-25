@@ -81,7 +81,8 @@ export const signup = async (req, res) => {
 
 		let user = await User.findOne({ email });
 
-		const { _id } = user;
+		// const { name } = user;
+		 const { _id, name } = user;
 
 		if (!user) return res.status(400).json({ error: "User not found" });
 
@@ -97,12 +98,12 @@ export const signup = async (req, res) => {
 		const from = process.env.MAILER_EMAIL;
 		const subject = "Password Reset Request";
 		const to = user.email;
-		const text = "Groove Platform test";
+		const text = "Groove Platform Email testing";
 		const html = `
-		  <div style="display: flex; justify-content: center; align-items: center; background-color: gray; flex-direction: column; padding: 2rem; color: #000000;">
-		       <p>Hi ${user.name} </p>
-			   <p>	You sent a password reset request. Please click on the following link <a href="#!"  style="color: blue;">${link}</a> to reset your password. </p> 	
-			   If this request wasn't authorized by you, kindly ignore this email.
+		  <div style=" background-color: #dceadd; padding: 5rem; color: #000; width: 100%; height: auto; text-align: center">
+		       <h2 style="color: green;">Hi ${name} </h2>\n
+			   <p>You sent a password reset request. Please click on the following link <a href="${link}"  style="color: blue;">${link}</a> to reset your password. </p>\n 	
+			   <span>If this request wasn't authorized by you, kindly ignore this email.</span>
 		  </div>
 		`;
 
