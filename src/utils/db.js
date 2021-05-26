@@ -7,10 +7,10 @@ const env = process.env.NODE_ENV;
 
 let uri;
 
-if (env === "development") {
-	uri = process.env.DEV_DB;
+if (env === "test") {
+	uri = process.env.TEST_DB;
 } else {
-	uri = process.env.PROD_DB;
+	uri = process.env.DEV_DB;
 }
 const connection = mongoose.connect(uri, {
 	useCreateIndex: true,

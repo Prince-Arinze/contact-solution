@@ -1,53 +1,53 @@
-Contact/Address Book (Rest Backend) Concept - Assessment
-===
+# Contact/Address Book (Rest Backend) Concept - Assessment
 
-You will be tasked with creating a nodejs based REST application which will serve as a data source for an existing Contact/Address book web and mobile application.
-The application will expose two rest resources
-
-* Auth Resource – This will handle endpoints for authentication which will include, login, signup etc
-* Contact Resource – This will handle CRUD endpoints for managing a user’s contact list. All endpoints in this resource should only be accessed by an authenticated and authorized user.
-
-The project will persist data to a mongodb database. A local database can be used but do provide instructions for reproducing the database.
-
-What we are testing
---
-
-* Express Project Structure Comprehension
-* Rest API Authentication
-* Rest API Endpoint Nomenclature
-* JavaScript ECMA standards 
-* Data Persistence (MongoDB)
-* Unit Testing
-
-What you will be given
---
-
-You will be provided with an initial project which will need to be completed. The project contains annotations which will serve as hints which should point you in the right direction when implementing missing endpoints and logic.
-The project structure is shown below.
-
-Go through the code to understand the structure before you start.
-Note:
-The assessment project uses babel to transpile ES6/ES7 to ES5
-
-Get Ready to Run
 ---
 
-* Pull the assessment repo
-    - > `git clone https://gitea.udux.com/backend-assessments/contact.git`
-* Pull up your favorite console and change to this directory
-* Install the projects dependencies 
-    - > `npm install`
+- Pull the assessment repo
+  - > `git clone https://github.com/Prince-Arinze/contact-solution.git`
+- Pull up your favorite console and change to this directory
+- Install the projects dependencies
 
-Start Development 
+  - > `npm install`
+
+- Set up the environmental variables
+
 ---
 
-* To build the project
-    - > `npm run build`
-* To continuously watch for changes 
-    - > `npm run watch`
-* To run your app server 
-    - > `npm run start`
+- Do this to declare the environmental variables
+- Create a `.env` file in the root directory of the project and add the following environment variable
+- To add Database URI connection string (local URI string or cloud database URI string)
+  - > `DEV_DB = mongodb://localhost:27017/contact` and `TEST_DB = mongodb://localhost:27017/test-contact`
+- To add secret key for jsonwebtoken token to `.env` file
+- This api stores two types of tokens: access_token and refresh_token
+- To add both tokens secret keys to the `.env` file do this
+  - > `ACCESS_TOKEN_SECRET=yoursecretaccessTOKENkey` and this `REFRESH_TOKEN_SECRET=yoursecretrefreshtokenkey`
+- To add nodemailer sender password and sender email for `FORGOT PASSWORD` emailing to `.env` file
 
-Submitting
---
-Push the repo to your favourite repo platform and share the url.
+  - > `MAILER_EMAIL=add_your_gmail_sender_email`
+  - > `MAILER_PASSWORD=add_your_gmail_sender`
+    - > If you don't have gmail account please do well to create one since the service used is gmail
+
+- To set development or test environment mode in the `.env` file
+  - > `NODE_ENV=development` for development mode or `NODE_ENV=test` for test mode
+
+## Start Development
+
+- To build the project
+  - > `npm run build`
+- To continuously watch for changes
+  - > `npm run watch`
+- To run your app server
+  - > `npm run start`
+- To test your app
+  - > `npm run test`
+
+## Start Test
+
+- Change `NODE_ENV` from development to test mode in the `.env` file to connect to the TEST mongodb database
+  - > `NODE_ENV=test`
+- To build the project
+  - > `npm run build`
+- To continuously watch for changes
+  - > `npm run watch`
+- To run test
+  - > `npm run test`

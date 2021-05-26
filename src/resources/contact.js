@@ -7,7 +7,7 @@ import auth from '../middleware/auth';
  */
 module.exports = app => {
     
-    app.route('/contact/all').get(all);
+    // app.route('/contact/all').get(all);
     /**
      * Create the remaining routes
      * get,

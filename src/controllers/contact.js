@@ -66,10 +66,10 @@ export const update = async (req, res) => {
     try {
 
         const { id, firstName, lastName, email, mobile, address } = req.body;
-        if (!id) return res.status(400).json({ error: "Invalid parameter: id" });
+        if (!id) return res.status(400).json({ err: "Invalid parameter: id" });
 
         let contact = await Contact.findById({ _id: id });
-        if (!contact) return res.status(404).json({ error: "Contact not found" });
+        if (!contact) return res.status(404).json({ err: "Contact not found" });
 
         if(firstName) contact.firstName = firstName;
         if(lastName) contact.lastName = lastName;
