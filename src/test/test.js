@@ -137,7 +137,7 @@ describe("Unit tests for User and Contacts Apis endpoint", () =>{
    // Test for failure to fetch a contact due to unauthorized access
 
     describe("GET /contact/:id", () => {
-        it("It should fail to fetch a contact", (done) => {
+        it("It should throw an access denied error", (done) => {
             const { _id } = createContacts
             chai.request(app)
             .get(`/contact/${_id}`)
@@ -154,7 +154,7 @@ describe("Unit tests for User and Contacts Apis endpoint", () =>{
   
     // Get a single contact using the id as the params only if you are authorized
     describe("GET /contact/:id", () => {
-        it("It should create a new contact", (done) => {
+        it("It should get a single contact", (done) => {
             const { _id } = createContacts
             chai.request(app)
             .get(`/contact/${_id}`)
@@ -174,7 +174,7 @@ describe("Unit tests for User and Contacts Apis endpoint", () =>{
    // Test for failure to fetch all contact due to unauthorized access
 
    describe("GET /contact/all", () => {
-        it("It should fail to fetch all contacts", (done) => {
+        it("It should throw an access denied error", (done) => {
             chai.request(app)
             .get(`/contact/all`)
             .end((err, response) => {        
@@ -189,7 +189,7 @@ describe("Unit tests for User and Contacts Apis endpoint", () =>{
 
     // Get all contact if you are authorized;
     describe("GET /contact/all", () => {
-        it("It should create a new contact", (done) => {
+        it("It should get all contacts", (done) => {
             chai.request(app)
             .get("/contact/all")
             .set("authorization", access_token)
@@ -226,13 +226,11 @@ describe("Unit tests for User and Contacts Apis endpoint", () =>{
     })
   });
 
+  
   // Test for deleting a contact
 
-  
-  // Test for updating a contact
-
-  describe("PUT /contact/update", () => {
-    it("It should update a contact", (done) => {
+  describe("DELETE /contact/delete/:id", () => {
+    it("It should delete a contact", (done) => {
         const id = createContacts._id;
         chai.request(app)
         .delete(`/contact/delete/${id}`)
